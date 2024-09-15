@@ -11,9 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const config = {
-  user: process.env.user,
-  password: process.env.password,
-  connectString: process.env.host // Ajuste de acordo com seu ambiente
+  user: 'seu_user',
+  password: 'sua_senha',
+  connectString: 'sua_conectString'// Ajuste de acordo com seu ambiente
 };
 async function getEmpresas() {
   let connection;
@@ -101,7 +101,7 @@ app.get("/empresas", async(req, res) => {
 app.post("/empresas", async(req, res) => {
   try {
     const corpo = req.body;
-
+    delete corpo.id; // Removendo ID, pois será gerado automaticamente
     insertEmpresa(corpo);
     res.send(corpo + "Empresa cadastrada com sucesso");
     console.log(JSON.stringify(corpo) + "Empresa cadastrada com sucesso");
