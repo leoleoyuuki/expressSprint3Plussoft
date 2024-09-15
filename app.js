@@ -103,8 +103,8 @@ app.post("/empresas", async(req, res) => {
     const corpo = req.body;
 
     insertEmpresa(corpo);
-    res.send(req.body + "Empresa cadastrada com sucesso");
-    console.log(JSON.stringify(req.body) + "Empresa cadastrada com sucesso");
+    res.send(corpo + "Empresa cadastrada com sucesso");
+    console.log(JSON.stringify(corpo) + "Empresa cadastrada com sucesso");
   } catch (error) {
     console.log(error);
     res.status(500).send("Erro ao cadastrar empresa");
